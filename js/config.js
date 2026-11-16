@@ -1,8 +1,7 @@
 // AidanBelasco.com settings. Change things here, not in the pages.
 window.AB = {
-  // Where the Shopify store lives. Switch to "https://shop.aidanbelasco.com"
-  // on the day AidanBelasco.com is pointed at this site.
-  shopBase: "https://aidanbelasco.com",
+  // Where the Shopify store lives.
+  shopBase: "https://shop.aidanbelasco.com",
 
   // Where quote requests are sent. Aidan chooses this address.
   quoteEmail: "aidanlgbelasco@gmail.com",
