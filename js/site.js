@@ -138,56 +138,38 @@
     });
   }
 
-  // ---------- Hire: quote request ----------
-  var form = $("form.quote");
-  if (form) {
-    var kinds = {
-      "Events": ["Quinceañera", "Sweet 16", "Wedding", "Party", "Family gathering", "Get-together", "Car show", "Other event"],
-      "Cars": ["Photos and video bundle", "Car photos", "Car video", "Car show"],
-      "Portraits": ["Portraits", "Headshots", "Family photos", "Graduation photos"],
-      "Business media": ["Media plan (ongoing photo and video)", "One-time video", "One-time photos"],
-      "Film crew": ["DP (director of photography)", "AC (camera assistant)", "PA (production assistant)", "Behind the scenes photos", "Behind the scenes video", "Behind the scenes photos and video"],
-      "Short films": ["Short film", "Cinematography", "Other film work"]
+  // ---------- Hire: request a quote ----------
+  var mail = $("[data-mail]"), tel = $("[data-tel]");
+  if (mail) {
+    var picked = "";
+    var setMail = function () {
+      var subject = "Quote request" + (picked ? ": " + picked : "");
+      var body = "Hi Aidan,\n\nName:\nWhat I need:" + (picked ? " " + picked : "") +
+        "\nDate:\nTown or venue:\n\nAnything else:\n";
+      mail.href = "mailto:" + (AB.quoteEmail || "") + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      var f = $(".for");
+      if (f) { f.hidden = !picked; f.textContent = picked ? "Asking about: " + picked : ""; }
     };
-    var kindWrap = $("#q-kind-wrap"), kindSel = $("#q-type");
-    $$("input[name=cat]", form).forEach(function (r) {
-      r.addEventListener("change", function () {
-        var list = kinds[r.value] || [];
-        while (kindSel.options.length > 1) kindSel.remove(1);
-        list.forEach(function (k) { kindSel.appendChild(el("option", { text: k })); });
-        kindSel.selectedIndex = 0;
-        kindSel.required = list.length > 0;
-        kindWrap.hidden = !list.length;
-      });
-    });
-    var out = $(".sent", form);
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (!form.reportValidity()) return;
-      var d = new FormData(form);
-      var cat = d.get("cat"), kind = kindWrap.hidden ? "" : (d.get("type") || "");
-      var need = kind ? cat + ", " + kind : cat;
-      var lines = [
-        "Name: " + d.get("name"),
-        "Reply to: " + d.get("contact"),
-        "Wants: " + need,
-        "Date: " + (d.get("date") || "not set yet"),
-        "Where: " + (d.get("place") || "not set yet"),
-        "", String(d.get("details") || "")
-      ];
-      var subject = "Quote request: " + (kind || cat) + (d.get("date") ? " on " + d.get("date") : "");
-      var body = lines.join("\n");
-      out.textContent = "";
-      if (AB.quoteEmail) {
-        var href = "mailto:" + AB.quoteEmail + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-        out.appendChild(document.createTextNode("Your email app should open with the request filled in. Hit send there. If nothing opened, email "));
-        out.appendChild(el("a", { href: href, text: AB.quoteEmail }));
-        out.appendChild(document.createTextNode("."));
-        window.location.href = href;
-      } else {
-        out.textContent = "The quote email address isn't set yet, so nothing was sent.";
+    setMail();
+    if (tel) {
+      var d = String(AB.phone || "").replace(/\D/g, "");
+      if (d.length === 10) {
+        tel.href = "tel:+1" + d;
+        $("span", tel).textContent = "(" + d.slice(0, 3) + ") " + d.slice(3, 6) + "-" + d.slice(6);
+        tel.hidden = false;
       }
-      out.classList.add("show");
+    }
+    var quote = $("#quote");
+    var still = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+    $$("[data-svc]").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        picked = a.getAttribute("data-svc");
+        $$("[data-svc]").forEach(function (x) { x.classList.toggle("on", x === a); });
+        setMail();
+        quote.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "center" });
+        quote.classList.remove("flash"); void quote.offsetWidth; quote.classList.add("flash");
+      });
     });
   }
 })();

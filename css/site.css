@@ -135,21 +135,6 @@ section{margin-top:56px}
 .note{font-size:13px;color:var(--dim);margin-top:22px;max-width:60ch}
 
 /* hire */
-.shoots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
-.shoots div{background:var(--bg);padding:20px}
-.shoots h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:22px;margin-bottom:6px}
-.shoots p{font-size:14px;color:var(--dim)}
-form.quote{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:720px}
-form.quote .full{grid-column:1/-1}
-form.quote label{display:block;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
-form.quote input,form.quote select,form.quote textarea{width:100%;background:var(--card);border:1px solid var(--line);
-  color:var(--ink);font:400 16px var(--body);padding:12px 14px;border-radius:0}
-form.quote textarea{min-height:120px;resize:vertical}
-form.quote input:focus,form.quote select:focus,form.quote textarea:focus{outline:2px solid var(--gold);outline-offset:0}
-.sent{grid-column:1/-1;font-size:14px;color:var(--dim);display:none}
-.sent.show{display:block}
-.sent a{color:var(--gold)}
-@media (max-width:600px){form.quote{grid-template-columns:1fr}}
 
 footer{margin-top:80px;border-top:1px solid var(--line);padding:26px clamp(18px,4vw,40px);
   display:flex;flex-wrap:wrap;gap:14px 28px;justify-content:space-between;font-size:13px;color:var(--dim)}
@@ -205,19 +190,7 @@ footer a:hover{color:var(--ink)}
   .panel.active .label p{display:-webkit-box}
 }
 
-/* Quote form: pick a category first, then a short list for that category */
-fieldset.need{border:0;min-width:0}
-fieldset.need legend{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:8px;padding:0}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips label{margin:0;letter-spacing:0;text-transform:none;cursor:pointer}
-.chips input{position:absolute;opacity:0;width:1px;height:1px}
-.chips span{display:block;font-size:15px;font-weight:400;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:10px 16px}
-.chips label:hover span{border-color:var(--ink)}
-.chips input:checked+span{background:var(--gold);border-color:var(--gold);color:#0a0a0b;font-weight:600}
-.chips input:focus-visible+span{outline:2px solid var(--gold);outline-offset:2px}
 [hidden]{display:none!important}
-fieldset.need{padding:0;margin:0}
-.chips{max-width:100%}
 
 /* About */
 .hero img.bg{object-position:44% 30%}
@@ -228,7 +201,6 @@ fieldset.need{padding:0;margin:0}
 .does h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:24px;margin-bottom:6px}
 .does p{font-size:14px;color:var(--dim);margin:0}
 
-.chips label{position:relative}
 /* A squeezed panel is too narrow for its two-line description: keep the title, hide the lines. */
 @container (max-width:280px){.label p{visibility:hidden}}
 /* Let a hero grow with a longer description instead of pushing text under the top bar. */
@@ -236,3 +208,20 @@ fieldset.need{padding:0;margin:0}
 .hero .in{padding-top:90px}
 .hero .sub.wide{max-width:none}
 @media (min-width:700px){.hero .sub.wide{white-space:nowrap}}
+
+/* Hire: what I do + request a quote */
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:14px}
+.svc a{background:var(--bg);display:flex;gap:16px;align-items:flex-start;padding:22px;text-decoration:none;transition:background .2s}
+.svc a:hover,.svc a.on{background:var(--card)}
+.svc svg{flex:none;width:28px;height:28px;margin-top:2px;fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+.svc b{display:block;font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:26px;line-height:1;margin-bottom:6px}
+.svc small{display:block;font-size:14px;color:var(--dim);line-height:1.5}
+.svc a.on b{color:var(--gold)}
+#quote{scroll-margin:calc(var(--bar) + 20px);padding:4px 0}
+#quote .callme{margin:0 0 18px}
+.for{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:-6px 0 16px}
+.ask{display:flex;flex-wrap:wrap;gap:10px;max-width:640px}
+.ask .btn{flex:1 1 240px;text-align:center}
+#quote.flash .sec{animation:flash 1.2s ease}
+@keyframes flash{0%,40%{color:var(--gold)}100%{color:var(--ink)}}
+@media (prefers-reduced-motion:reduce){#quote.flash .sec{animation:none}}

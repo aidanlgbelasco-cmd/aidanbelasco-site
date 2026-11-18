@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hire · Belasco Media</title>
-<meta name="description" content="Belasco Media. Event photo and video in New Jersey: quinceañeras, sweet 16s, weddings, parties and local businesses.">
+<meta name="description" content="Belasco Media. Photography, videography and production in New Jersey. Request a quote by email, call or text.">
 <link rel="preload" href="fonts/anton.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%230a0a0b%27/%3E%3Ctext x=%2716%27 y=%2722%27 font-family=%27Arial%27 font-weight=%27700%27 font-size=%2715%27 text-anchor=%27middle%27 fill=%27%23e8b53a%27%3EAB%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/site.css">
@@ -18,43 +18,32 @@
   <div class="hero">
     <video src="media/hire.mp4" poster="media/hire.jpg" muted loop playsinline autoplay aria-hidden="true"></video>
     <div class="in"><span class="kicker">Hire</span><h1>Belasco Media</h1>
-    <p class="sub wide">Photo and video for your business, events, or ideas. Based in New Jersey.</p>
-    <p class="sub">For hire on film sets as DP, AC or PA, and for behind the scenes.</p></div>
+    <p class="sub wide">Photo and video for your business, events, or ideas. Based in New Jersey.</p></div>
   </div>
   <div class="wrap">
+    <section id="services">
+      <span class="kicker">What I do</span>
+      <div class="svc">
+        <a href="#quote" data-svc="Photography"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span><b>Photography</b><small>Events, cars, portraits, and business.</small></span></a>
+        <a href="#quote" data-svc="Videography"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="1"/><path d="M16 10l5-3v10l-5-3"/></svg><span><b>Videography</b><small>Events, commercials, and social content.</small></span></a>
+        <a href="#quote" data-svc="Production"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M8 4v16M16 4v16M4 8h4M4 12h4M4 16h4M16 8h4M16 12h4M16 16h4"/></svg><span><b>Production</b><small>Film crew: camera operator, camera assistant, production assistant, director of photography, and behind the scenes.</small></span></a>
+      </div>
+    </section>
     <section id="quote">
       <span class="kicker">Book</span><h2 class="sec">Request a quote</h2>
-      <p class="callme" data-phone hidden>Fill this in, or call or text me at <a></a>.</p>
-      <form class="quote">
-        <div><label for="q-name">Your name</label><input id="q-name" name="name" required autocomplete="name"></div>
-        <div><label for="q-contact">Phone or email</label><input id="q-contact" name="contact" required></div>
-        <fieldset class="full need">
-          <legend>What we offer</legend>
-          <div class="chips">
-            <label><input type="radio" name="cat" value="Events" required><span>Events</span></label>
-            <label><input type="radio" name="cat" value="Cars"><span>Cars</span></label>
-            <label><input type="radio" name="cat" value="Portraits"><span>Portraits</span></label>
-            <label><input type="radio" name="cat" value="Business media"><span>Business media</span></label>
-            <label><input type="radio" name="cat" value="Film crew"><span>Film crew</span></label>
-            <label><input type="radio" name="cat" value="Short films"><span>Short films</span></label>
-            <label><input type="radio" name="cat" value="Something else"><span>Something else</span></label>
-          </div>
-        </fieldset>
-        <div id="q-kind-wrap" hidden><label for="q-type">Which kind?</label>
-          <select id="q-type" name="type"><option value="" selected disabled>Pick one</option></select></div>
-        <div><label for="q-date">Date</label><input id="q-date" name="date" type="date"></div>
-        <div class="full"><label for="q-place">Town or venue</label><input id="q-place" name="place"></div>
-        <div class="full"><label for="q-details">Tell me about it</label><textarea id="q-details" name="details"></textarea></div>
-        <div class="full"><button class="btn" type="submit">Request a quote</button></div>
-        <p class="sent" role="status"></p>
-      </form>
+      <p class="callme">Tell me what you need and when. I'll get back to you with a price.</p>
+      <p class="for" role="status" hidden></p>
+      <div class="ask">
+        <a class="btn" data-mail href="#">Email me</a>
+        <a class="btn ghost" data-tel hidden href="#">Call or text <span></span></a>
+      </div>
     </section>
     <a class="back" href="index.html">← Back to select</a>
   </div>
 </main>
 <footer>
   <span>© 2026 Aidan Belasco · New Jersey</span>
-  <span><a data-yt href="#">YouTube</a> &nbsp;·&nbsp; <a data-ig href="#">Instagram</a> &nbsp;·&nbsp; <a href="hire.html">Request a quote</a></span>
+  <span><a data-yt href="#">YouTube</a> &nbsp;·&nbsp; <a data-ig href="#">Instagram</a> &nbsp;·&nbsp; <a href="hire.html#quote">Request a quote</a></span>
 </footer>
 <script src="js/config.js"></script>
 <script src="js/site.js"></script>
